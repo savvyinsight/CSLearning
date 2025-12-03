@@ -27,5 +27,44 @@ man soket  ->to see details
 
 
 2.Client Side
+    1.Create Socket
+    2.Connect
+    3.Send and Receive
+    4.Close
+
+--------------TCP Connection Establishment Process :3 way HandShake-------------------------------
+Refer : https://ipwithease.com/understanding-tcp-3-way-handshake-process/
+Refer: https://www.geeksforgeeks.org/computer-networks/tcp-3-way-handshake-process/
+
+==========Send and Receive data ===================
+
+-------------- TCP Connection Termination : 4 way four-step handshake-------------------------
+Refer : https://www.geeksforgeeks.org/computer-networks/why-tcp-connect-termination-need-4-way-handshake/
+
+
+
+
+---------------TCP Newtork Programming API------------------
+You Can check a specific api by : man 7 socket   or   man socket,  
+if you want to know in which chapter : man -k socket
+
+You can know all api details by checking.
+*/
+
+
+#include <cstddef>
+#include <cstring>
+#include <iostream>
+#include <ostream>
+#include <string>
+#include <sys/types.h>
+int main(){
+    std::cout<<sizeof(int)<<std::endl;
+    std::cout<<sizeof(size_t)<<std::endl;
+    std::cout<<sizeof(ssize_t)<<std::endl;
+    std::cout<<sizeof(long)<<std::endl;
+
+
     
-*/ 
+
+}
