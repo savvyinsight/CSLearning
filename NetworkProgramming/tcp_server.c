@@ -1,7 +1,3 @@
-
-
-
-
 #include <arpa/inet.h>
 #include <netinet/in.h>
 #include <stdlib.h>
@@ -9,6 +5,7 @@
 #include <string.h>
 #include <strings.h>
 #include <sys/socket.h>
+#include <sys/types.h>
 #include <unistd.h>
 
 #define BUFFER_SIZE 1024
@@ -19,30 +16,54 @@ void chat(int connfd){
     char buffer[BUFFER_SIZE];
     int n = 0;
     while(1){
-        bzero(buffer,BUFFER_SIZE);
+        // bzero(buffer,BUFFER_SIZE);
+        memset(buffer, 0, BUFFER_SIZE);
 
         // read the message from client and copy it in buffer
-        read(connfd, buffer, sizeof(buffer));
+        // read(connfd, buffer, sizeof(buffer));
+        /*
+        ssize_t byte_read = read(connfd, buffer, BUFFER_SIZE-1);
+        if(byte_read<=0) break;
+        buffer[byte_read] = '\0';
+        */
+        // use recv instand of read
+        ssize_t byte_received = recv(connfd, buffer, BUFFER_SIZE-1, 0);
+        if(byte_received <= 0) {
+            if(byte_received < 0) perror("receive failed.");
+            else printf("Client disconnected.\n");
+            break;  // Exit loop!
+        }
+        buffer[byte_received] = '\0';
 
         // printf buffer which contains the client contents
         printf("From Client : %s ",buffer);
 
-        bzero(buffer, BUFFER_SIZE);
+        // bzero(buffer, BUFFER_SIZE);
+        memset(buffer, 0, BUFFER_SIZE);
 
         n = 0;
         printf("To Client : ");
         // copy server message in the buffer
-        while((buffer[n++] = getchar()) != '\n');
+        while((buffer[n++] = getchar()) != '\n' && n<BUFFER_SIZE-1);
+        buffer[n] = '\0'; // Null-termination
 
-        printf("before writing to connfd: %s\n",buffer);
         // send that buffer to client
-        write(connfd,buffer,sizeof(buffer));
+        // send only the actual message length
+        // write(connfd,buffer,n); // n includes the newline
 
-        if(strncmp(buffer, "exit", 4) == 0){
-            printf("Server Exit.\n");
+        // use send instand of write
+        if(send(connfd, buffer, n, 0)<0){
+            perror("send failed.");
             break;
         }
+
+        if(strcmp(buffer, "exit\n") == 0){
+            printf("Server Exit.\n");
+            break;  
+        }
     }
+    // server close connfd
+    close(connfd);
 }
 
 
@@ -56,7 +77,8 @@ int main(){
         exit(0);
     }
 
-    bzero(&servaddr, sizeof(servaddr));
+    // bzero(&servaddr, sizeof(servaddr));
+    memset(&servaddr, 0, sizeof(servaddr));
 
     // assign IP, PORT
     servaddr.sin_family = AF_INET;

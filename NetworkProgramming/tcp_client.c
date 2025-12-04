@@ -1,4 +1,5 @@
 #include <string.h>
+#include <sys/types.h>
 #include <unistd.h> // close
 #include <arpa/inet.h> // htons, inet_addr()
 #include <stdlib.h>
@@ -15,16 +16,51 @@ void chat(int sockfd){
     printf("If you want to end communicate, enter: exit\n");
     int n = 0;
     while (1) {
-        bzero(buffer, sizeof(buffer));
+        // bzero(buffer, sizeof(buffer));
+        memset(buffer, 0, BUFFER_SIZE);
         printf("Enter the Message : ");
         n = 0;
-        while((buffer[n++] = getchar()) != '\n');
+        while((buffer[n++] = getchar()) != '\n' && n< BUFFER_SIZE-1);
+        buffer[n] = '\0';
 
-        write(sockfd, buffer, sizeof(buffer));
-        bzero(buffer, sizeof(buffer));
-        read(sockfd, buffer, sizeof(buffer));
+        // don't read/write the full BUFFER_SIZE, this wastes bandwith.
+        // write(sockfd, buffer, sizeof(buffer));  
+
+        // size_t len = strlen(buffer);
+        // write(sockfd, buffer, len);
+        // use send instand of write
+        if(send(sockfd, buffer, n, 0)<0){
+            perror("send faild.");
+            break;
+        }
+
+        // bzero(buffer, sizeof(buffer));
+        memset(buffer, 0, BUFFER_SIZE);
+
+        // read(sockfd, buffer, BUFFER_SIZE-1);
+
+        // handle return values
+        /*ssize_t bytes_read = read(sockfd, buffer, BUFFER_SIZE - 1);
+        if (bytes_read <= 0) {
+            // Handle error or connection closed
+            printf("read failed or connection closed.\n");
+            break;
+        }
+        buffer[bytes_read] = '\0';  // Null-terminate
+        */
+
+        // use recv instand of read
+        ssize_t bytes_receive = recv(sockfd, buffer, BUFFER_SIZE-1, 0);
+        if(bytes_receive <= 0) {
+            if(bytes_receive < 0) perror("receive failed.");
+            else printf("Server disconnected.\n");
+            break;
+        }
+        buffer[bytes_receive] = '\0';
+
+
         printf("Server : %s",buffer);
-        if((strncmp(buffer, "exit", 4)) ==0 ){
+        if(strcmp(buffer, "exit\n") ==0 ){
             printf("Client Exit...\n");
             break;
         }
@@ -43,7 +79,8 @@ int main(){
         exit(0);
     }
 
-    bzero(&servaddr, sizeof(servaddr));
+    // bzero(&servaddr, sizeof(servaddr));
+    memset(&servaddr, 0, sizeof(servaddr));
 
     // assign IP, PORT
     servaddr.sin_family = AF_INET;
