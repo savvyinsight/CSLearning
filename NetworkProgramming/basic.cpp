@@ -51,20 +51,3 @@ if you want to know in which chapter : man -k socket
 You can know all api details by checking.
 */
 
-
-#include <cstddef>
-#include <cstring>
-#include <iostream>
-#include <ostream>
-#include <string>
-#include <sys/types.h>
-int main(){
-    std::cout<<sizeof(int)<<std::endl;
-    std::cout<<sizeof(size_t)<<std::endl;
-    std::cout<<sizeof(ssize_t)<<std::endl;
-    std::cout<<sizeof(long)<<std::endl;
-
-
-    
-
-}

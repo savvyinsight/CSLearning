@@ -23,6 +23,10 @@ void chat(int sockfd){
         while((buffer[n++] = getchar()) != '\n' && n< BUFFER_SIZE-1);
         buffer[n] = '\0';
 
+        if(strcmp(buffer, "exit\n") ==0 ){
+            printf("Client Exit...\n");
+            break;
+        }
         // don't read/write the full BUFFER_SIZE, this wastes bandwith.
         // write(sockfd, buffer, sizeof(buffer));  
 

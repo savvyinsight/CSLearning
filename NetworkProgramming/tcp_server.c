@@ -100,18 +100,20 @@ int main(){
 
     printf("Server listening .... \n");
 
-    socklen_t len = sizeof(cliaddr);
-    connfd = accept(sockfd, (SoAd*)&cliaddr, &len);
-    if(connfd < 0){
-        perror("server accept failed");
-        close(connfd);
-        exit(0);
+    while(1){
+        socklen_t len = sizeof(cliaddr);
+        connfd = accept(sockfd, (SoAd*)&cliaddr, &len);
+        if(connfd < 0){
+            perror("server accept failed");
+            close(connfd);
+            exit(0);
+        }
+
+        printf("received connection.\n");
+
+        // chat
+        chat(connfd);
     }
-
-    printf("received connection.\n");
-
-    // chat
-    chat(connfd);
 
     close(sockfd);
 
