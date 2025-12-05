@@ -48,6 +48,17 @@ Refer : https://www.geeksforgeeks.org/computer-networks/why-tcp-connect-terminat
 You Can check a specific api by : man 7 socket   or   man socket,  
 if you want to know in which chapter : man -k socket
 
+S:socket, bind, listen, accept, send/recv, close
+C:socket                connect,send/recv, close               
 You can know all api details by checking.
+
+---------------UDP Newtork Programming API------------------
+socket, bind, sendto, recvfrom, close
+
+---------------convert IPv4 and IPv6 addresses--------------
+inet_pton , inet_ntop :  convert IPv4 and IPv6 addresses from text to binary form
+inet_addr :              converts the Internet host address from the IPv4 numbers-and-dots notation into binary form (in network  byte
+order)
+
 */
 
