@@ -7,6 +7,7 @@ set(CMAKE_C_STANDARD_REQUIRED ON)
 
 # Build both executables
 add_executable(client tcp_client.c)
+add_executable(serverWThread tcp_serverwith_thread.c)
 add_executable(server tcp_server.c)
 
 # Link libraries (both need socket)
