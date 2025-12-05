@@ -70,3 +70,7 @@ send()/recv() are better for sockets.
 send(sockfd, buffer, len, MSG_NOSIGNAL);  // No SIGPIPE signal
 recv(sockfd, buffer, size, MSG_DONTWAIT); // Non-blocking
 ```
+
+## tcp_server_with_thread
+- Need to properly handle memory allocation for passing the socket descriptor
+- Use pthread_detach() or pthread_join() to prevent memory leaks
