@@ -5,6 +5,7 @@
 #include <string.h>
 #include <sys/socket.h>
 #include <sys/types.h>
+#include <unistd.h>
 
 #define PORT 8080
 #define BUFFER_SIZE 1024
@@ -13,6 +14,7 @@ int main(){
     int sockfd;
     struct sockaddr_in servaddr,cliaddr;
     char buffer[BUFFER_SIZE];
+    const char* hello = "Hello From Server";
 
     sockfd = socket(AF_INET, SOCK_DGRAM, 0);
     if(sockfd < -1){
@@ -32,7 +34,28 @@ int main(){
     }
 
     printf("UDP listening...\n");
-    
+
+    ssize_t bytes_received,bytes_sent;
+    socklen_t addr_len = sizeof(cliaddr);
+    while (1) {
+        bytes_received = recvfrom(sockfd, buffer, BUFFER_SIZE-1, 0, (struct sockaddr*)&cliaddr,&addr_len);
+        if(bytes_received < 0){
+            perror("receive failed.");
+            continue;
+        }
+
+        buffer[bytes_received] = '\0';//Null-termination
+        printf("Client:%s\n",buffer);
+
+        bytes_sent = sendto(sockfd, hello, strlen(hello), 0, (struct sockaddr*)&cliaddr, addr_len);
+        if(bytes_sent < 0){
+            perror("sent  failed.");
+            continue;
+        }
+        printf("hello message sent.\n");
+
+    }
+    close(sockfd);
 
     return 0;
 }
