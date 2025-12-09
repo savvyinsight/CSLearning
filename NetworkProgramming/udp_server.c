@@ -6,6 +6,7 @@
 #include <sys/socket.h>
 #include <sys/types.h>
 #include <unistd.h>
+#include <arpa/inet.h>
 
 #define PORT 8080
 #define BUFFER_SIZE 1024
@@ -45,7 +46,9 @@ int main(){
         }
 
         buffer[bytes_received] = '\0';//Null-termination
-        printf("Client:%s\n",buffer);
+        char *ip_str = inet_ntoa(cliaddr.sin_addr);
+        int port = ntohs(cliaddr.sin_port);
+        printf("Client ip:%s  port:%d, message:%s\n",ip_str,port,buffer);
 
         bytes_sent = sendto(sockfd, hello, strlen(hello), 0, (struct sockaddr*)&cliaddr, addr_len);
         if(bytes_sent < 0){
