@@ -9,6 +9,8 @@ set(CMAKE_C_STANDARD_REQUIRED ON)
 add_executable(client tcp_client.c)
 add_executable(serverWThread tcp_serverwith_thread.c)
 add_executable(server tcp_server.c)
+add_executable(server_udp udp_server.c)
+add_executable(client_udp udp_client.c)
 
 # Link libraries (both need socket)
 target_link_libraries(client)
