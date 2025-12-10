@@ -60,5 +60,15 @@ inet_pton , inet_ntop :  convert IPv4 and IPv6 addresses from text to binary for
 inet_addr :              converts the Internet host address from the IPv4 numbers-and-dots notation into binary form (in network  byte
 order)
 
+---------------I/O Multiplexing--------------
+I/O Multiplexing allows a single process or thread to monitor multiple input/output (I/O) 
+streams — such as sockets, files, or pipes —
+simultaneously, without blocking on any one of them. Instead of using one thread per I/O source,
+multiplexing enables efficient handling of numerous I/O operations through a single control 
+loop, typically via system calls like select(), poll(), or epoll() in Unix-like operating systems.
+
+1.select()
+2.poll()
+3.epoll()
 */
 
