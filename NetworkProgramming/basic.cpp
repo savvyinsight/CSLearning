@@ -67,8 +67,14 @@ simultaneously, without blocking on any one of them. Instead of using one thread
 multiplexing enables efficient handling of numerous I/O operations through a single control 
 loop, typically via system calls like select(), poll(), or epoll() in Unix-like operating systems.
 
-1.select()
+1.select():
+    FD_ZERO(fd_set *set)     // Clear all bits in set
+    FD_SET(int fd, fd_set *set)   // Add fd to set
+    FD_CLR(int fd, fd_set *set)   // Remove fd from set
+    FD_ISSET(int fd, fd_set *set) // Test if fd is in set
 2.poll()
-3.epoll()
+3.epoll():epoll_create, epoll_create1
+    epoll_ctl
+    epoll_wait, epoll_pwait
 */
 
