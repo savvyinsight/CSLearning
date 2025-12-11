@@ -76,5 +76,31 @@ loop, typically via system calls like select(), poll(), or epoll() in Unix-like 
 3.epoll():epoll_create, epoll_create1
     epoll_ctl
     epoll_wait, epoll_pwait
+
+-----------------------Blocking and Non-Blocking---------------
+Blocking : blocking sockets is default mode, when call 'recv(),send(),accept()',the function blocks
+(pause execution) the thread or progress until:
+For 'recv()': Data is available from network.
+For 'send()': Data is abailable from kernel's send buffer.
+For 'accept()': A new client connection is pending.
+
+Non-Blocking: immediately return. these 'recv(),send(),accept()'will be set to 'EAGAIN' or 'EWOULDBLOCK'
+key advandtage : let programmes perform other tasks while waiting for i/o,enample handiling of 
+multiple connections with i/o multiplexing.
+
+How to do?
+To set a socket to Non-Blocking mode , we use the 'fcntl()'(file control) system call.
+see details with man fcntl 
+
+===>Converting a TCP Socket to non-block:
+1.create tcp socket : int sockfd = socket(AF_INET,SOCK_STREAM,0)
+2.get current socket flags : int flags = fcntl(sockfd,F_GETFL)
+3.add non-block to flag: flags |= O_NONBLOCK
+4.apply the new flag: // Apply new flags
+if (fcntl(sockfd, F_SETFL, flags) < 0) {
+    perror("fcntl F_SETFL failed");
+    ...
+}
+
 */
 
