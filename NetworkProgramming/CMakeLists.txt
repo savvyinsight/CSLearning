@@ -13,6 +13,7 @@ add_executable(server_udp udp_server.c)
 add_executable(client_udp udp_client.c)
 add_executable(server_select select_server.c)
 add_executable(server_select_nonblocking select_server_nonblocking.c)
+add_executable(poll_server poll_server.c)
 
 # Link libraries (both need socket)
 target_link_libraries(client)
