@@ -74,3 +74,35 @@ recv(sockfd, buffer, size, MSG_DONTWAIT); // Non-blocking
 ## tcp_server_with_thread
 - Need to properly handle memory allocation for passing the socket descriptor
 - Use pthread_detach() or pthread_join() to prevent memory leaks
+
+## epoll_server
+- issue : compile succeeded, but when run:
+➜  NetworkProgramming git:(main) ✗ ./sel 
+[1]    134302 segmentation fault (core dumped)  ./sel
+➜  NetworkProgramming git:(main) ✗
+
+**Why**:
+#define MAX_CLIENTS 10000
+client_t clients[MAX_CLIENTS];
+
+reason: stack overflow
+concrete calculate:
+client_t struct include,
+int fd (4Byte)
+
+struct sockaddr_in addr (at least16Byte)
+
+char buffer[BUFFER_SIZE] (BUFFER_SIZE = 4096Byte)
+
+size_t buf_len (8Byte)
+
+int need_write (4Byte)
+
+sizeof(client_t) ≈ 4 + 16 + 4096 + 8 + 4 ≈ 4128Byte , 
+then clients[10000] ≈ 4128 × 10000 ≈ 41.28 MB
+
+so classic stack size usually 8MB
+
+**Solution**:
+1.Use dynamic memory allocation (malloc)
+2.Reduce the array size , #define MAX_CLIENTS 1024
