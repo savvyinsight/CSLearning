@@ -207,6 +207,8 @@ Easy Problems for training program in Go
 
 2. ## Implement a simple worker poll
 
+   
+
 3. ## Producer and Consumer Problem
 
 4. ## 
