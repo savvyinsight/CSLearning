@@ -1,4 +1,4 @@
-# Use SSH instead of
+# Use SSH instead of HTTP
 
 GitHub stopped accepting passwords in 2021. Use SSH keys or generate a token in GitHub Settings → Developer settings → Personal access tokens
 
@@ -144,5 +144,16 @@ Host github.com
   Port 443
   User git
   ProxyCommand nc -x 127.0.0.1:7897 %h %p
+```
+
+
+
+# if use proxy:
+
+**Configure a proxy**: If you're behind a corporate proxy, you need to configure your shell to use it:
+
+```bash
+export http_proxy=http://your-proxy:port
+export https_proxy=http://your-proxy:port
 ```
 
