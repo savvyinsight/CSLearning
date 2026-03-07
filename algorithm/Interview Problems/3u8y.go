@@ -110,3 +110,10 @@ func main() {
 	// approach1()
 	approach2()
 }
+
+/*
+The closest related LeetCode problems are:
+RLE Iterator – Iterate through a run-length encoded sequence.
+Flatten 2D Vector – Access elements in a flattened 2D structure.
+Design Compressed String Iterator – Iterate over compressed data.
+*/
