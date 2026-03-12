@@ -15,3 +15,15 @@
 | ---- | ---- | ---- | ---- |
 |   1   |  [Valid Palindrome](https://leetcode.com/problems/valid-palindrome/)    |   [LeetCode Problem](./LeetCode%20Problems/125.%20Valid%20Palindrome.go)   | Easy |
 |   2   |
+
+
+# Stack
+|Sequence    |   LeetCode   |  ProblemList    | Difficulty  |
+| ---- | ---- | ---- | ---- |
+|   1   |  [Valid Parentheses](https://leetcode.com/problems/valid-parentheses/)    |   [LeetCode Problem](./LeetCode%20Problems/20.%20Valid%20Parentheses.go)   | Easy |
+
+
+# Binary Search
+|Sequence    |   LeetCode   |  ProblemList    | Difficulty  |
+| ---- | ---- | ---- | ---- |
+|   1   |  [Binary Search](https://leetcode.com/problems/binary-search/)    |   [LeetCode Problem](./LeetCode%20Problems/704.%20Binary%20Search.go)   | Easy |
