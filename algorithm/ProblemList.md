@@ -27,3 +27,17 @@
 |Sequence    |   LeetCode   |  ProblemList    | Difficulty  |
 | ---- | ---- | ---- | ---- |
 |   1   |  [Binary Search](https://leetcode.com/problems/binary-search/)    |   [LeetCode Problem](./LeetCode%20Problems/704.%20Binary%20Search.go)   | Easy |
+
+
+# Sliding Window
+|Sequence    |   LeetCode   |  ProblemList    | Difficulty  |
+| ---- | ---- | ---- | ---- |
+|   1   |  [Best Time to Buy and Sell Stock](https://leetcode.com/problems/best-time-to-buy-and-sell-stock/)    |   [LeetCode Problem](./LeetCode%20Problems/121.%20Best%20Time%20to%20Buy%20and%20Sell%20Stock.go)   | Easy |
+
+
+# Linked List
+|Sequence    |   LeetCode   |  ProblemList    | Difficulty  |
+| ---- | ---- | ---- | ---- |
+|   1   |  [Reverse Linked List](https://leetcode.com/problems/reverse-linked-list/)    |   [LeetCode Problem](./LeetCode%20Problems/206.%20Reverse%20Linked%20List.go)   | Easy |
+|   2   |  [Merge Two Sorted Lists](https://leetcode.com/problems/merge-two-sorted-lists/)    |   [LeetCode Problem](./LeetCode%20Problems/21.%20Merge%20Two%20Sorted%20Lists.go)   | Easy |
+|
