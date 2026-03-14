@@ -58,6 +58,34 @@ func maxDepth_2(root *TreeNode) int {
 	return depth
 }
 
+// iterative dfs
+func maxDepth_3(root *TreeNode) int {
+	if root == nil {
+		return 0
+	}
+	stack := []struct {
+		node  *TreeNode
+		depth int
+	}{{root, 1}}
+	maxDepth := 0
+	for len(stack) > 0 {
+		curr := stack[len(stack)-1]
+		stack = stack[:len(stack)-1]
+		if curr.node != nil {
+			maxDepth = max(maxDepth, curr.depth)
+			stack = append(stack, struct {
+				node  *TreeNode
+				depth int
+			}{curr.node.Left, curr.depth + 1})
+			stack = append(stack, struct {
+				node  *TreeNode
+				depth int
+			}{curr.node.Right, curr.depth + 1})
+		}
+	}
+	return maxDepth
+}
+
 func main() {
 	// [1,2,3,null,null,4,5]
 	n1 := &TreeNode{Val: 1}
@@ -72,4 +100,5 @@ func main() {
 
 	println(maxDepth_1(n1)) // 3
 	println(maxDepth_2(n1)) // 3
+	println(maxDepth_3(n1))
 }
