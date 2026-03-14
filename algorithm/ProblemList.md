@@ -41,3 +41,9 @@
 |   1   |  [Reverse Linked List](https://leetcode.com/problems/reverse-linked-list/)    |   [LeetCode Problem](./LeetCode%20Problems/206.%20Reverse%20Linked%20List.go)   | Easy |
 |   2   |  [Merge Two Sorted Lists](https://leetcode.com/problems/merge-two-sorted-lists/)    |   [LeetCode Problem](./LeetCode%20Problems/21.%20Merge%20Two%20Sorted%20Lists.go)   | Easy |
 |
+
+
+# Tree
+|Sequence    |   LeetCode   |  ProblemList    | Difficulty  |
+| ---- | ---- | ---- | ---- |
+|   1   |  [Maximum Depth of Binary Tree](https://leetcode.com/problems/maximum-depth-of-binary-tree/)    |   [LeetCode Problem](./LeetCode%20Problems/104.%20Maximum%20Depth%20of%20Binary%20Tree.go)   | Easy |
