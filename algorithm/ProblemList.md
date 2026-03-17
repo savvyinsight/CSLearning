@@ -9,6 +9,7 @@
 |   5   |   [Top K Frequent Elements](https://leetcode.com/problems/top-k-frequent-elements/)   |   [LeetCode Problem](./LeetCode%20Problems/347.%20Top%20K%20Frequent%20Elements.go)   | Medium |
 |   6  |   [Encode and Decode Strings](https://leetcode.com/problems/encode-and-decode-strings/)   |   [LeetCode Problem](./LeetCode%20Problems/271.%20Encode%20and%20Decode%20Strings.go)   | Medium |
 |  7  |   [Product of Array Except Self](https://leetcode.com/problems/product-of-array-except-self/)   |   [LeetCode Problem](./LeetCode%20Problems/238.%20Product%20of%20Array%20Except%20Self.go)   | Medium |
+|  8 |   [Valid Sudoku](https://leetcode.com/problems/valid-sudoku/)   |   [LeetCode Problem](./LeetCode%20Problems/36.%20Valid%20Sudoku.go)   | Medium |
 
 # Two Pointers
 
