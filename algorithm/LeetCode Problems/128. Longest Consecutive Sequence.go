@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"sort"
+)
 
 // 128. Longest Consecutive Sequence
 // https://leetcode.com/problems/longest-consecutive-sequence/description/
@@ -22,6 +25,54 @@ Thinking process:
 	This ensures each number is processed only once(as a start of a squence), and inside the while
 	loop we visit each number in that squence only once overall, so total O(n).
 */
+// brute force O(n**2)
+func longestConsecutive_1(nums []int) int {
+	set := make(map[int]struct{})
+	for _, num := range nums {
+		set[num] = struct{}{}
+	}
+
+	res := 0
+	for num := range set {
+		curr, streak := num, 0
+		for _, ok := set[curr]; ok; _, ok = set[curr] {
+			curr++
+			streak++
+		}
+		if streak > res {
+			res = streak
+		}
+	}
+	return res
+}
+
+// Sort
+func longestConsecutive_2(nums []int) int {
+	if len(nums) == 0 {
+		return 0
+	}
+	sort.Ints(nums)
+	res := 1
+	streak := 1
+
+	for i := 1; i < len(nums); i++ {
+		// Skip duplicates
+		if nums[i] == nums[i-1] {
+			continue
+		}
+
+		if nums[i] == nums[i-1]+1 {
+			streak++
+		} else {
+			streak = 1
+		}
+
+		if streak > res {
+			res = streak
+		}
+	}
+	return res
+}
 
 func longestConsecutive(nums []int) int {
 	set := make(map[int]bool)
@@ -50,6 +101,6 @@ func longestConsecutive(nums []int) int {
 
 func main() {
 	nums := []int{100, 4, 200, 1, 3, 2}
-	res := longestConsecutive(nums)
+	res := longestConsecutive_2(nums)
 	fmt.Print(res)
 }
