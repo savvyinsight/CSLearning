@@ -17,7 +17,7 @@
 |Sequence    |   LeetCode   |  ProblemList    | Difficulty  |
 | ---- | ---- | ---- | ---- |
 |   1   |  [Valid Palindrome](https://leetcode.com/problems/valid-palindrome/)    |   [LeetCode Problem](./LeetCode%20Problems/125.%20Valid%20Palindrome.go)   | Easy |
-|   2   |
+|   2   |   [Two Sum II - Input Array Is Sorted](https://leetcode.com/problems/two-sum-ii-input-array-is-sorted)    |   [LeetCode Problem](./LeetCode%20Problems/167.%20Two%20Sum%20II%20-%20Input%20Array%20Is%20Sorted.go)   | Easy |
 
 # Stack
 
