@@ -50,6 +50,7 @@
 |Sequence    |   LeetCode   |  ProblemList    | Difficulty  |
 | ---- | ---- | ---- | ---- |
 |   1   |  [Maximum Depth of Binary Tree](https://leetcode.com/problems/maximum-depth-of-binary-tree/)    |   [LeetCode Problem](./LeetCode%20Problems/104.%20Maximum%20Depth%20of%20Binary%20Tree.go)   | Easy |
+|   2   |  [Invert Binary Tree](https://leetcode.com/problems/invert-binary-tree/)    |   [LeetCode Problem](./LeetCode%20Problems/226.%20Invert%20Binary%20Tree.go)   | Easy |
 
 #
 
