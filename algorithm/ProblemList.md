@@ -19,12 +19,15 @@
 |   1   |  [Valid Palindrome](https://leetcode.com/problems/valid-palindrome/)    |   [LeetCode Problem](./LeetCode%20Problems/125.%20Valid%20Palindrome.go)   | Easy |
 |   2   |   [Two Sum II - Input Array Is Sorted](https://leetcode.com/problems/two-sum-ii-input-array-is-sorted)    |   [LeetCode Problem](./LeetCode%20Problems/167.%20Two%20Sum%20II%20-%20Input%20Array%20Is%20Sorted.go)   | Easy |
 |  3   |   [3Sum](https://leetcode.com/problems/3sum/)    |   [LeetCode Problem](./LeetCode%20Problems/15.%203Sum.go)   | Medium |
+| 4   |   [Container With Most Water](https://leetcode.com/problems/container-with-most-water/)    |   [LeetCode Problem](./LeetCode%20Problems/11.%20Container%20With%20Most%20Water.go)   | Medium |
+| 5   |   [Trapping Rain Water](https://leetcode.com/problems/trapping-rain-water/)    |   [LeetCode Problem](./LeetCode%20Problems/42.%20Trapping%20Rain%20Water.go)   | Hard |
 
 # Stack
 
 |Sequence    |   LeetCode   |  ProblemList    | Difficulty  |
 | ---- | ---- | ---- | ---- |
 |   1   |  [Valid Parentheses](https://leetcode.com/problems/valid-parentheses/)    |   [LeetCode Problem](./LeetCode%20Problems/20.%20Valid%20Parentheses.go)   | Easy |
+|   2   |  [Min Stack](https://leetcode.com/problems/min-stack/)    |   [LeetCode Problem](./LeetCode%20Problems/155.%20Min%20Stack.go)   | Easy |
 
 # Binary Search
 
