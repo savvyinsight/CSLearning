@@ -12,6 +12,7 @@
 |  8 |   [Valid Sudoku](https://leetcode.com/problems/valid-sudoku/)   |   [LeetCode Problem](./LeetCode%20Problems/36.%20Valid%20Sudoku.go)   | Medium |
 |  9 |   [Longest Consecutive Sequence](https://leetcode.com/problems/longest-consecutive-sequence)   |   [LeetCode Problem](./LeetCode%20Problems/./128.%20Longest%20Consecutive%20Sequence.go)   | Medium |
 
+
 # Two Pointers
 
 |Sequence    |   LeetCode   |  ProblemList    | Difficulty  |
@@ -47,6 +48,8 @@
 | ---- | ---- | ---- | ---- |
 |   1   |  [Reverse Linked List](https://leetcode.com/problems/reverse-linked-list/)    |   [LeetCode Problem](./LeetCode%20Problems/206.%20Reverse%20Linked%20List.go)   | Easy |
 |   2   |  [Merge Two Sorted Lists](https://leetcode.com/problems/merge-two-sorted-lists/)    |   [LeetCode Problem](./LeetCode%20Problems/21.%20Merge%20Two%20Sorted%20Lists.go)   | Easy |
+|  3   |  [Reorder Linked List](https://leetcode.com/problems/reorder-list/)    |   [LeetCode Problem](./LeetCode%20Problems/143.%20Reorder%20Linked%20List.go)   | Medium |
+|  4   |  [Linked List Cycle](https://leetcode.com/problems/linked-list-cycle/)    |   [LeetCode Problem](./LeetCode%20Problems/141.%20Linked%20List%20Cycle.go)   | Easy |
 |
 
 # Tree
