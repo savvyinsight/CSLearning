@@ -22,6 +22,7 @@
 |  3   |   [3Sum](https://leetcode.com/problems/3sum/)    |   [LeetCode Problem](./LeetCode%20Problems/15.%203Sum.go)   | Medium |
 | 4   |   [Container With Most Water](https://leetcode.com/problems/container-with-most-water/)    |   [LeetCode Problem](./LeetCode%20Problems/11.%20Container%20With%20Most%20Water.go)   | Medium |
 | 5   |   [Trapping Rain Water](https://leetcode.com/problems/trapping-rain-water/)    |   [LeetCode Problem](./LeetCode%20Problems/42.%20Trapping%20Rain%20Water.go)   | Hard |
+|  6  |  [Longest Palindromic Substring](https://leetcode.com/problems/longest-palindromic-substring/)    |   [LeetCode Problem](./LeetCode%20Problems/5.%20Longest%20Palindromic%20Substring.go)   | Medium |
 
 # Stack
 
