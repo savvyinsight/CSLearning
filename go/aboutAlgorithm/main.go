@@ -1,13 +1,65 @@
 package main
 
 import (
+	"bufio"
 	"container/heap"
 	"container/list"
 	"fmt"
 	"math"
 	"math/rand"
+	"os"
 	"sort"
+	"strconv"
 )
+
+/*
+Method			Speed	Ease of Use		Best For
+fmt.Scan		Slow	Very easy		Small inputs (<10⁵)
+bufio.Scanner	Medium	Easy	Most 	competitions
+Custom reader	Fast	Hard	Very 	large inputs (>10⁶)
+
+*/
+
+// input from keyboard
+func fmtScan() {
+	// 1.fmt.Scan family (Easy but slow)
+	var n int
+	fmt.Scan(&n) // Reads one int
+	fmt.Print("n is :", n)
+	var a, b int
+	fmt.Scan(&a, &b) // Reads multiple
+	fmt.Print("a,b is :", a, b)
+	var s string
+	fmt.Scan(&s) // Reads string (whitespace-separated)
+	fmt.Print("s is :", s)
+	//
+}
+
+// Reads raw line or tokens with full control
+// Buffered, handles large input efficiently
+func bufioScan() {
+	scanner := bufio.NewScanner(os.Stdin)
+	scanner.Split(bufio.ScanWords) //space-seperated words
+	// Read next token
+	scanner.Scan()
+
+	n, _ := strconv.Atoi(scanner.Text())
+
+	arr := make([]int, 10, 10)
+	fmt.Println(arr)
+	// Reading multiple numbers
+	for i := 0; i < n; i++ {
+		scanner.Scan()
+		arr[i], _ = strconv.Atoi(scanner.Text())
+	}
+	fmt.Println(arr)
+
+	// Reading entire line
+	scanner1 := bufio.NewScanner(os.Stdin)
+	scanner1.Scan()
+	line := scanner1.Text()
+	fmt.Println(line)
+}
 
 func maxMin() {
 	minInt := math.MinInt
@@ -34,16 +86,22 @@ func maxMin() {
 }
 
 func sorting() {
-	arr := []int{3, 1, 4, 1, 5}
+	arr := []int{3, 1, 4, 1, 5, 8, 2, 7}
 	sort.Ints(arr) // ascending
+
+	fmt.Println(arr)
 
 	// Descending
 	sort.Sort(sort.Reverse(sort.IntSlice(arr)))
+
+	fmt.Println(arr)
 
 	// Custom comparator
 	sort.Slice(arr, func(i, j int) bool {
 		return arr[i]%2 < arr[j]%2 // evens first
 	})
+
+	fmt.Println(arr)
 
 	// Sort structs
 	type Person struct {
@@ -54,12 +112,72 @@ func sorting() {
 	sort.Slice(people, func(i, j int) bool {
 		return people[i].Age < people[j].Age
 	})
+	fmt.Println(people)
+}
+
+func sliceCopy() {
+	original := []int{1, 2, 3, 4, 5}
+	// Method 1: Using built-in copy function
+	copied := make([]int, len(original))
+	copy(copied, original)
+
+	fmt.Println("Original:", original)
+	fmt.Println("Copied:", copied)
+
+	// Method 2: Using append to create a new slice
+	copied2 := append([]int(nil), original...)
+	fmt.Println("Copied2:", copied2)
+}
+
+func packAndUnpack() {
+	// Packing multiple values into a struct
+	type Point struct {
+		X, Y int
+	}
+	p := Point{X: 3, Y: 4}
+
+	// Unpacking values from a struct
+	x, y := p.X, p.Y
+	fmt.Printf("x: %d, y: %d\n", x, y)
+
+	// For simple cases, can also return multiple values from a function
+	a, b := getPair()
+	fmt.Printf("a: %d, b: %s\n", a, b)
+
+	original := []int{1, 2, 3}
+	copied := append([]int(nil), original...) // creates a new slice with same contents
+	// same as copied := append([]int{},1,2,3) or copied := make([]int, len(original)); copy(copied, original)
+
+	fmt.Println("Original:", original)
+	fmt.Println("Copied:", copied)
+
+	// Merge two slices
+	slice1 := []int{1, 2, 3}
+	slice2 := []int{4, 5, 6}
+	merged := append(slice1, slice2...)
+	fmt.Println("Merged:", merged)
+
+	// use sum
+	sum := func(nums ...int) int {
+		total := 0
+		for _, num := range nums {
+			total += num
+		}
+		return total
+	}
+	nums := []int{1, 2, 3, 4}
+	sumResult := sum(nums...) // unpack slice into variadic function, same as sum(1, 2, 3, 4)
+	fmt.Println("Sum:", sumResult)
 }
 
 func hashMap() {
 	freq := make(map[string]int)
 	freq["apple"] = 5
 	freq["banana"]++
+	freq["good"]++
+	freq["good"]++
+
+	fmt.Println(freq)
 
 	// Check existence
 	if val, exists := freq["apple"]; exists {
@@ -78,6 +196,8 @@ func hashMap() {
 
 	// Delete
 	delete(freq, "apple")
+
+	fmt.Println(freq)
 }
 
 // max-heap/min-heap
@@ -91,18 +211,31 @@ func priorityQueue() {
 	heap.Pop(h) // remove min
 }
 
+// ==============================================HEAP========
+// Using `container/heap` (standard library), go provides heap interface, that you need to
+// implement.
+
 // Min-heap (Go's heap is always min-heap for ints)
+// IntHeap implements heap.Interface
 type IntHeap []int
 
-func (h IntHeap) Len() int           { return len(h) }
-func (h IntHeap) Less(i, j int) bool { return h[i] < h[j] } // min-heap
-func (h IntHeap) Swap(i, j int)      { h[i], h[j] = h[j], h[i] }
+func (h IntHeap) Len() int { return len(h) }
 
-func (h *IntHeap) Push(x interface{}) {
+// For min-heap priority < , for max-heap priority >
+func (h IntHeap) Less(i, j int) bool { return h[i] < h[j] } // min-heap
+
+func (h IntHeap) Swap(i, j int) { // Not need pointer, slice share underlying array
+	h[i], h[j] = h[j], h[i]
+}
+
+func (h *IntHeap) Push(x interface{}) { // Need pointer, will slice length changes.(slice header)
 	*h = append(*h, x.(int))
 }
 
-func (h *IntHeap) Pop() interface{} {
+// Slice header (ptr, len, cap) is passed by value (copy) --->need pointer to change
+// Underlying array is shared (reference)
+
+func (h *IntHeap) Pop() interface{} { // Need pointer, will slice length changes.(slice header)
 	old := *h
 	n := len(old)
 	x := old[n-1]
@@ -206,19 +339,59 @@ func randomRange() {
 	// min + rand.Intn(max-min+1)
 }
 
+func String() {
+	const sample = "\xbd\xb2\x3d\xbc\x20\xe2\x8c\x98"
+	fmt.Println(sample)
+
+	for i := 0; i < len(sample); i++ {
+		fmt.Printf("%x ", sample[i])
+	}
+
+	//The %q (quoted) verb will escape any non-printable byte
+	// sequences in a string so the output is unambiguous.
+	fmt.Printf("\n%q\n", sample)
+
+	fmt.Println("Printf with %+q:")
+	fmt.Printf("%+q\n", sample)
+}
+
 func runeAndbyte() {
 	s := "hello世界"
 
-	// s[i] returns byte
+	fmt.Println(len(s))
+	fmt.Println(s[5], s[6], s[7])
+
+	// Indexing and Ranging
+	// s[i] returns byte (uint8), not character
 	for i := 0; i < len(s); i++ {
 		fmt.Printf("s[%d] = %v (type: %T)\n", i, s[i], s[i]) // byte (uint8)
 	}
 
-	// range returns rune
+	// range returns rune (int32) and index of rune
 	for i, ch := range s {
 		fmt.Printf("s[%d] = %c (type: %T)\n", i, ch, ch) // rune (int32)
 	}
+	// return bytes not characters
 	fmt.Println(len(s))
+
+	// actual character count
+	fmt.Println(len([]rune(s)))
+
+	// Converting between them
+	bytes := []byte(s) // 11 bytes
+	runes := []rune(s) // 7 runes (5 latin + 2 CJK)
+	fmt.Println(bytes, runes)
+
+	// Strings inmutable, so first need convert to []rune or []byte
+	// s[2] = "d" , false
+	arr := []byte(s)
+	arr[2] = 'k'
+	fmt.Println(arr) // returns byte slice, not string
+
+	// if want string, need convert back
+	// arr := []rune(s)
+	// arr[2] = 'k'
+	fmt.Println(string(arr))
 }
 
 func lengthOfLongestSubstringByte(s string) int {
@@ -305,6 +478,22 @@ func preorderTraversal(root *TreeNode) []int {
 	dfs(root)
 	return res
 }
-func main() {
 
+func joinStrings(sep string, words ...string) string {
+	if len(words) == 0 {
+		return ""
+	}
+	res := words[0]
+	for i := 1; i < len(words); i++ {
+		res += sep + words[i]
+	}
+	return res
+}
+
+func testJoinStrings() {
+	words := []string{"good", "boy", "hello"}
+	fmt.Println(joinStrings(",", words...))
+}
+func main() {
+	runeAndbyte()
 }
