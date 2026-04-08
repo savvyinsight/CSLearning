@@ -42,6 +42,7 @@
 |Sequence    |   LeetCode   |  ProblemList    | Difficulty  |
 | ---- | ---- | ---- | ---- |
 |   1   |  [Best Time to Buy and Sell Stock](https://leetcode.com/problems/best-time-to-buy-and-sell-stock/)    |   [LeetCode Problem](./LeetCode%20Problems/121.%20Best%20Time%20to%20Buy%20and%20Sell%20Stock.go)   | Easy |
+|   2   |  [Longest Substring Without Repeating Characters](https://leetcode.com/problems/longest-substring-without-repeating-characters/)    |   [LeetCode Problem](./LeetCode%20Problems/3.%20Longest%20Substring%20Without%20Repeating%20Characters.go)   | Medium |
 
 # Linked List
 
