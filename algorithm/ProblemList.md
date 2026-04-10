@@ -30,6 +30,7 @@
 | ---- | ---- | ---- | ---- |
 |   1   |  [Valid Parentheses](https://leetcode.com/problems/valid-parentheses/)    |   [LeetCode Problem](./LeetCode%20Problems/20.%20Valid%20Parentheses.go)   | Easy |
 |   2   |  [Min Stack](https://leetcode.com/problems/min-stack/)    |   [LeetCode Problem](./LeetCode%20Problems/155.%20Min%20Stack.go)   | Easy |
+|   3   |  [Evaluate Reverse Polish Notation](https://leetcode.com/problems/evaluate-reverse-polish-notation) [LeetCode Problem](./LeetCode%20Problems/) |Medium| 
 
 # Binary Search
 
